@@ -19,7 +19,7 @@ spec:
       source:
         path: examples/standard
         repoURL: https://github.com/kubernetes/kube-state-metrics.git
-        targetRevision: HEAD
+        targetRevision: 4a585c91beffdbd1378833ce5f102b401e7e57c5 # v2.15.0
       destination:
         server: "{{.server}}"
         namespace: kube-system
