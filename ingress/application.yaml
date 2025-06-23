@@ -32,6 +32,3 @@ spec:
       syncPolicy:
         automated:
           selfHeal: true
-        syncOptions:
-          - ServerSideApply=true
-          - Validate=false
