@@ -26,6 +26,14 @@ spec:
             prometheus.io/scrape: "true"
             prometheus.io/scheme: "http"
             prometheus.io/path: "/metrics"
+          patches:
+            - target:
+                kind: Deployment
+                name: addMetrics
+              patches: |-
+                - op: add
+                  path: /spec/template/spec/containers/0/args/-
+                  value: --enable-metrics
       destination:
         server: "{{.server}}"
         namespace: ingress-nginx
