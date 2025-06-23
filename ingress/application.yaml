@@ -16,13 +16,16 @@ spec:
       name: ingress-nginx
     spec:
       project: default
-      sources:
-        - repoURL: https://github.com/kubernetes/ingress-nginx.git
-          path: deploy/static/provider/cloud
-          targetRevision: af6352cbe46e3c384c69c28257efa99535b97c80 # v1.12.3
-        - repoURL: https://github.com/gattjoe/pathfinder.git
-          path: ingress
-          targetRevision: HEAD
+      source:
+        repoURL: https://github.com/kubernetes/ingress-nginx.git
+        path: deploy/static/provider/cloud
+        targetRevision: af6352cbe46e3c384c69c28257efa99535b97c80 # v1.12.3
+        kustomize:
+          commonAnnotations:
+            prometheus.io/port: "10254"
+            prometheus.io/scrape: "true"
+            prometheus.io/scheme: "http"
+            prometheus.io/path: "/metrics"
       destination:
         server: "{{.server}}"
         namespace: ingress-nginx
