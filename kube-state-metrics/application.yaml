@@ -24,4 +24,5 @@ spec:
         server: "{{.server}}"
         namespace: kube-system
       syncPolicy:
-        automated: {}
+        automated:
+          selfHeal: true
