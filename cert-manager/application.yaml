@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
+  template:
+    metadata:
+      name: cert-manager
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/cert-manager/cert-manager.git
+        path: releases/download/v1.18.1/
+        targetRevision: d5382c8e024d418866d317ab1d7537d837b612a2 # v1.18.1
+      destination:
+        server: "{{.server}}"
+        namespace: cert-manager
+      syncPolicy:
+        automated:
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
