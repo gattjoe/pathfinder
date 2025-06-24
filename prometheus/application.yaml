@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prometheus
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
+  template:
+    metadata:
+      name: prometheus
+    spec:
+      project: default
+      source:
+        path: prometheus/base
+        repoURL: https://github.com/gattjoe/pathfinder.git
+        targetRevision: HEAD
+      destination:
+        server: "{{.server}}"
+        namespace: monitoring
+      syncPolicy:
+        automated:
+          selfHeal: true
