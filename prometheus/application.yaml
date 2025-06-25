@@ -16,10 +16,13 @@ spec:
       name: prometheus
     spec:
       project: default
-      source:
-        path: prometheus/base
-        repoURL: https://github.com/gattjoe/pathfinder.git
-        targetRevision: HEAD
+      sources:
+        - repoURL: https://github.com/gattjoe/pathfinder.git
+          path: prometheus/base
+          targetRevision: HEAD
+        - repoURL: https://github.com/gattjoe/pathfinder.git
+          path: prometheus/{{.server}}
+          targetRevision: HEAD
       destination:
         server: "{{.server}}"
         namespace: monitoring
