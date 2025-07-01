@@ -7,6 +7,8 @@ spec:
   sourceRepos:
     - "https://github.com/gattjoe/pathfinder.git"
   destinations:
+    - server: "*"
+      namespace: "!default"
     - server: "https://192.168.6.3:6443"
       namespace: "*"
     - server: "https://vader.echobase.network:6443"
