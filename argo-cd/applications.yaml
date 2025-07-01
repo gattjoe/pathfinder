@@ -6,7 +6,7 @@ metadata:
 spec:
   project: prod
   destination:
-    namespace: "*"
+    namespace: default
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/gattjoe/pathfinder
