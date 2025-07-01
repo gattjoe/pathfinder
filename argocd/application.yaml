@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: applications
+  name: application
   namespace: argocd
 spec:
   project: prod
@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/gattjoe/pathfinder
     targetRevision: HEAD
-    path: argo-cd
+    path: argocd
   syncPolicy:
     automated:
       prune: false
