@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: dev
+  namespace: argocd
+spec:
+  sourceRepos:
+    - "https://github.com/gattjoe/pathfinder.git"
+  destinations:
+    - server: "https://192.168.6.3:6443"
+      namespace: "*"
+    - server: "https://vader.echobase.network:6443"
+      namespace: "*"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
