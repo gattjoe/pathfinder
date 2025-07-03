@@ -4,13 +4,6 @@ metadata:
   name: ingress-nginx
   namespace: argocd
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
-  generators:
-    - clusters:
-        selector:
-          matchLabels:
-            name: "vader"
   template:
     metadata:
       name: ingress-nginx
@@ -35,8 +28,9 @@ spec:
             prometheus.io/scheme: "http"
             prometheus.io/path: "/metrics"
       destination:
-        server: "{{.server}}"
+        server: https://kubernetes.default.svc
         namespace: ingress-nginx
       syncPolicy:
         automated:
+          prune: true
           selfHeal: true
