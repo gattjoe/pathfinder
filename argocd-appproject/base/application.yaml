@@ -4,7 +4,7 @@ metadata:
   name: application
   namespace: argocd
 spec:
-  project: kenobi
+  project: default
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
@@ -13,9 +13,5 @@ spec:
     targetRevision: HEAD
     path: argocd
   syncPolicy:
-    automated:
-      prune: false
-      selfHeal: true
-      allowEmpty: false
     syncOptions:
       - CreateNamespace=true
