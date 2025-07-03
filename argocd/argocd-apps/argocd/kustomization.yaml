@@ -12,5 +12,4 @@ components:
 
 images:
   - name: quay.io/argoproj/argocd
-    newName: ghcr.io/argoproj/argo-cd/argocd
-    newTag: 3.0.6-db93798
+    newTag: 3.0.6@sha256:07e42fb99ed8ac1e25f8de6f5b687d3a21c1ed272ceac20f5ca45a392eca0a84
