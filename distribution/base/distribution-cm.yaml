@@ -7,8 +7,13 @@ data:
   config.yml: |
     version: 0.1
     log:
+      accesslog:
+        disabled: true
+      level: info
+      formatter: text
       fields:
         service: registry
+        environment: staging
     storage:
       cache:
         blobdescriptor: inmemory

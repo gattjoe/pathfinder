@@ -27,6 +27,9 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+          env:
+            - name: OTEL_TRACES_EXPORTER
+              value: none
           volumeMounts:
             - name: distribution-local-volume
               mountPath: /var/lib/registry
