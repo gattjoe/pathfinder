@@ -25,9 +25,17 @@ data:
       tag:
         concurrencylimit: 8
     http:
-      addr: :5000
+      addr: localhost:5000
+      debug:
+        addr: localhost:5001
+        prometheus:
+          enabled: true
+          path: /metrics
+      host: https://registry.echobase.network:5000
       headers:
         X-Content-Type-Options: [nosniff]
+      http2:
+        disabled: false
     auth:
       htpasswd:
         realm: basic-realm
@@ -37,5 +45,3 @@ data:
         enabled: true
         interval: 10s
         threshold: 3
-    http:
-      host: https://registry.echobase.network:5000
