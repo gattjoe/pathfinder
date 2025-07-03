@@ -13,7 +13,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local
   local:
-    path: /mnt/registry
+    path: /var/registry
   nodeAffinity:
     required:
       nodeSelectorTerms:
