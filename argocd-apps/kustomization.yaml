@@ -4,5 +4,6 @@ kind: Kustomization
 namespace: argocd
 resources:
   - base/argo-cd.yaml
+  - base/distribution.yaml # hard coded to Kenobi
   - base/ingress-nginx.yaml
-  - base/openwebui.yaml
+  - base/openwebui.yaml # hard coded to Kenobi

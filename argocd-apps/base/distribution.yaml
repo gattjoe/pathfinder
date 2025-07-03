@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: distribution
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/gattjoe/pathfinder.git
+    path: distribution
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: distribution
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
