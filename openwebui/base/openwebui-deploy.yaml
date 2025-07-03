@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openwebui
+  namespace: openwebui
+  labels:
+    app: openwebui
+    name: openwebui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openwebui
+  template:
+    metadata:
+      labels:
+        app: openwebui
+        name: openwebui
+    spec:
+      containers:
+        - name: openwebui
+          image: ghcr.io/open-webui/open-webui@sha256:01add1f7940bf57474055aaf34d4ea0ac762c05f309735e183b3712586f0befe
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8888
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "1"
+            limits:
+              memory: "2048Mi"
+              cpu: "2"
+          env:
+            - name: OLLAMA_BASE_URL
+              value: "http://r2d2.echobase.network:11434"
+            - name: WEBUI_AUTH
+              value: "false"
+            - name: WEBUI_URL
+              value: "https://openwebui.echobase.network"
+            - name: PORT
+              value: "8888"
+            - name: WEBUI_SESSION_COOKIE_SAME_SITE
+              value: "strict"
+            - name: WEBUI_SESSION_COOKIE_SECURE
+              value: "True"
+          volumeMounts:
+            - name: openwebui-local-volume
+              mountPath: /app/backend/data
+      volumes:
+        - name: openwebui-local-volume
+          persistentVolumeClaim:
+            claimName: openwebui-local-claim
