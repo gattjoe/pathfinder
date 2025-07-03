@@ -10,6 +10,8 @@ metadata:
     # then you need to force the nginx ingress to connect to the backend using HTTPS.
     #
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    ingress.kubernetes.io/proxy-body-size: 100M
+    ingress.kubernetes.io/app-root: "/"
 spec:
   ingressClassName: nginx
   rules:
@@ -17,7 +19,7 @@ spec:
       http:
         paths:
           - path: /
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: argocd-server
@@ -26,4 +28,4 @@ spec:
   tls:
     - hosts:
         - argocd.echobase.network
-      secretName: argocd-server-tls # as expected by argocd-server
+      secretName: argocd-server-tls

@@ -3,7 +3,14 @@ kind: Kustomization
 
 namespace: argocd
 resources:
-  - https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/ha/install.yaml
-  - argocd-ingress.yaml
-  - default.yaml
-  - kenobi.yaml
+  - base/argocd-ingress.yaml
+  - base/rollouts-extension.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml
+
+components:
+  - https://github.com/argoproj-labs/argocd-extensions/manifests
+
+images:
+  - name: quay.io/argoproj/argocd
+    newName: ghcr.io/argoproj/argo-cd/argocd
+    newTag: 3.0.6-db93798
