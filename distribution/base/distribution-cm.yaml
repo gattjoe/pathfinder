@@ -25,9 +25,9 @@ data:
       tag:
         concurrencylimit: 8
     http:
-      addr: localhost:5000
+      addr: :5000
       debug:
-        addr: localhost:5001
+        addr: :5001
         prometheus:
           enabled: true
           path: /metrics
