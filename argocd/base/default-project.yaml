@@ -6,6 +6,7 @@ metadata:
 spec:
   sourceRepos:
     - "https://github.com/gattjoe/pathfinder.git"
+    - "https://github.com/kubernetes/ingress-nginx.git"
   destinations:
     - server: "*"
       namespace: "!default"
