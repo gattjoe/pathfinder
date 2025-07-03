@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: vader
+  name: kenobi
   namespace: argocd
 spec:
   sourceRepos:
@@ -9,9 +9,15 @@ spec:
   destinations:
     - server: "*"
       namespace: "!default"
-    - server: "https://192.168.6.3:6443"
+    - server: "https://kenobi.echobase.network:6443"
+      namespace: "*"
+    - server: "https://kubernetes.default.svc"
+      namespace: "*"
+    - server: "https://192.168.3.2:6443"
       namespace: "*"
     - server: "https://vader.echobase.network:6443"
+      namespace: "*"
+    - server: "https://192.168.6.3:6443"
       namespace: "*"
   clusterResourceWhitelist:
     - group: "*"
