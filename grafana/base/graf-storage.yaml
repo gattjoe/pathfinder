@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: graf-local-volume
+  namespace: monitoring
+  labels:
+    directory: grafana
+spec:
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local
+  local:
+    path: /mnt/graf
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node-role.kubernetes.io/master
+              operator: In
+              values:
+                - "true"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: graf-local-claim
+  namespace: monitoring
+spec:
+  storageClassName: local
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  selector:
+    matchLabels:
+      directory: grafana
