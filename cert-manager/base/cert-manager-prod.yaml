@@ -1,0 +1,39 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: gattjoe@users.noreply.github.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      - dns01:
+          azureDNS:
+            clientID: fd7d4396-9f73-441c-b409-82fbd5c59183
+            clientSecretSecretRef:
+              name: azuredns-config
+              key: client-secret
+            subscriptionID: 297ff344-cabc-4419-981c-9cc11dfa42dc
+            tenantID: 89f29e85-836c-4dd2-a430-ac48f4036e8e
+            resourceGroupName: Hoth
+            hostedZoneName: echobase.network
+            environment: AzurePublicCloud
+        selector:
+          dnsNames:
+            - "pihole.echobase.network"
+            - "dashboard.echobase.network"
+            - "registry.echobase.network"
+            - "ollama.echobase.network"
+            - "redis.echobase.network"
+            - "devregistry.echobase.network"
+            - "comfyui.echobase.network"
+            - "monitoring.echobase.network"
+            - "blocky.echobase.network"
+            - "ingress.metrics.vader.echobase.network"
+            - "openwebui.echobase.network"
+            - "qdrant.echobase.network"
+            - "argocd.echobase.network"
+            - "grpc.argocd.echobase.network"

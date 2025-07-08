@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: default
+  namespace: argocd
+spec:
+  sourceRepos:
+    - "https://github.com/gattjoe/pathfinder.git"
+    - "https://github.com/kubernetes/ingress-nginx.git"
+  destinations:
+    - server: "*"
+      namespace: "!default"
+    - server: "https://kubernetes.default.svc"
+      namespace: "*"
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"

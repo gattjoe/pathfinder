@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+resources:
+  - base/default-project.yaml
+  - base/argocd-ui-ingress.yaml
+  - base/argocd-grpc-ingress.yaml
+  - base/rollouts-extension.yaml
+  #- base/kenobi-cluster.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml
+
+components:
+  - https://github.com/argoproj-labs/argocd-extensions/manifests
+
+patches:
+  - path: overlays/argocd-cmd-params-cm.yaml
+
+images:
+  - name: quay.io/argoproj/argocd
+    newTag: 3.0.6@sha256:07e42fb99ed8ac1e25f8de6f5b687d3a21c1ed272ceac20f5ca45a392eca0a84
