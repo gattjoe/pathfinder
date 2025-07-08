@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: distribution
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "kenobi"
+  template:
+    metadata:
+      name: distribution
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/gattjoe/pathfinder.git
+        targetRevision: HEAD
+        path: distribution
+      destination:
+        server: "{{.server}}"
+        namespace: distribution
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true

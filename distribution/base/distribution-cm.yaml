@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: distribution-cm
+  namespace: distribution
+data:
+  config.yml: |
+    version: 0.1
+    log:
+      accesslog:
+        disabled: true
+      level: info
+      formatter: text
+      fields:
+        service: registry
+        environment: staging
+    storage:
+      cache:
+        blobdescriptor: inmemory
+      delete:
+        enabled: false
+      filesystem:
+        rootdirectory: /var/lib/registry
+        maxthreads: 100
+      tag:
+        concurrencylimit: 8
+    http:
+      addr: :5000
+      debug:
+        addr: :5001
+        prometheus:
+          enabled: true
+          path: /metrics
+      host: https://registry.echobase.network
+      headers:
+        X-Content-Type-Options: [nosniff]
+      http2:
+        disabled: false
+    auth:
+      htpasswd:
+        realm: basic-realm
+        path: /etc/registry
+    health:
+      storagedriver:
+        enabled: true
+        interval: 10s
+        threshold: 3

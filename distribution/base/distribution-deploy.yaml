@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distribution
+  namespace: distribution
+  labels:
+    app: distribution
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: distribution
+  template:
+    metadata:
+      labels:
+        app: distribution
+    spec:
+      containers:
+        - name: distribution
+          image: registry@sha256:1fc7de654f2ac1247f0b67e8a459e273b0993be7d2beda1f3f56fbf1001ed3e7
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          env:
+            - name: OTEL_TRACES_EXPORTER
+              value: none
+            - name: REGISTRY_LOG_LEVEL
+              value: info
+          volumeMounts:
+            - name: distribution-local-volume
+              mountPath: /var/lib/registry
+      volumes:
+        - name: distribution-local-volume
+          persistentVolumeClaim:
+            claimName: distribution-volume-claim

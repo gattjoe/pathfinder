@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: distribution
+  labels:
+    name: distribution
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: distribution-limitrange
+  namespace: distribution
+  labels:
+    name: distribution
+spec:
+  limits:
+    - default:
+        cpu: 200m
+        memory: 256Mi
+      defaultRequest:
+        cpu: 200m
+        memory: 256Mi
+      max:
+        cpu: 500m
+        memory: 512Mi
+      min:
+        cpu: 200m
+        memory: 256Mi
+      type: Container
