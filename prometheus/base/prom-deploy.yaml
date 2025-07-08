@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-server
+  namespace: monitoring
+  labels:
+    app: prometheus-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-server
+  template:
+    metadata:
+      labels:
+        app: prometheus-server
+    spec:
+      hostname: prometheus
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10000
+        runAsGroup: 65534
+        fsGroup: 20000
+        seccompProfile:
+          type: RuntimeDefault
+      serviceAccountName: prometheus-k8s
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v3.4.2@sha256:3b1d5be5c3eef4f027665ddaa3b1a7de8a58d96a0a6de5dd45629afd267ecaf0
+          imagePullPolicy: Always
+          args:
+            - "--storage.tsdb.path=/prometheus"
+            - "--config.file=/etc/prometheus/prometheus.yml"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1024Mi"
+              cpu: "1"
+          volumeMounts:
+            - name: prometheus-config-volume
+              mountPath: /etc/prometheus
+            - name: prom-local-volume
+              mountPath: /prometheus
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10000
+            runAsGroup: 20000
+      volumes:
+        - name: prometheus-config-volume
+          configMap:
+            defaultMode: 420
+            name: prometheus-config
+        - name: prom-local-volume
+          persistentVolumeClaim:
+            claimName: prom-local-claim

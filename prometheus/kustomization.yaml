@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: monitoring
+resources:
+  - base/prom-namespace.yaml
+  - base/prom-cluster-storage.yaml # hard coded to a master node
+  - base/prom-RBAC.yaml
+  - base/prom-service.yaml
+  - base/prom-deploy.yaml
+  - maul/prom-cm.yaml
