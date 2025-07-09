@@ -23,7 +23,7 @@ data:
 
       - job_name: 'node'
         static_configs:
-        - targets: ['localhost:9100']
+        - targets: ['maul.echobase.network:9100']
           labels:
             job: 'node-exporter'
 
