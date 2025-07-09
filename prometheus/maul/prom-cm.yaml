@@ -17,7 +17,7 @@ data:
       - job_name: 'prometheus'
         scrape_interval: 5s
         static_configs:
-        - targets: ['maul.echobase.network:9090']
+        - targets: ['maul.echobase.network:8080']
           labels:
             job: 'Prometheus'
 
