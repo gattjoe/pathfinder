@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kube-state-metrics
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
+  template:
+    metadata:
+      name: kube-state-metrics
+    spec:
+      project: default
+      source:
+        path: examples/standard
+        repoURL: https://github.com/kubernetes/kube-state-metrics.git
+        targetRevision: 4a585c91beffdbd1378833ce5f102b401e7e57c5 # v2.15.0
+      destination:
+        server: "{{.server}}"
+        namespace: kube-system
+      syncPolicy:
+        automated:
+          selfHeal: true
