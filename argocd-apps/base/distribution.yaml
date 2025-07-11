@@ -10,7 +10,7 @@ spec:
     - clusters:
         selector:
           matchLabels:
-            name: "kenobi"
+            name: maul
   template:
     metadata:
       name: distribution
@@ -21,9 +21,9 @@ spec:
         targetRevision: 3.0.0
         chart: distribution
         helm:
-          releaseName: "{{.server}}"
+          releaseName: maul
       destination:
-        server: "{{.server}}"
+        server: maul
         namespace: distribution
       syncPolicy:
         syncOptions:
