@@ -18,8 +18,8 @@ spec:
       project: default
       source:
         repoURL: https://github.com/gattjoe/pathfinder.git
-        targetRevision: HEAD
-        path: distribution
+        targetRevision: 3.0.0
+        chart: distribution
       destination:
         server: "{{.server}}"
         namespace: distribution

@@ -14,10 +14,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - registry.echobase.network
+        - "{{ .Values.ingress.hosts }}"
       secretName: distribution-prod-tls
   rules:
-    - host: registry.echobase.network
+    - host: "{{ .Values.ingress.host }}"
       http:
         paths:
           - path: /
