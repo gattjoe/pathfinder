@@ -23,7 +23,7 @@ spec:
         helm:
           releaseName: "{{.server}}"
       destination:
-        server: { { .server } }
+        server: "{{.server}}"
         namespace: distribution
       syncPolicy:
         syncOptions:
