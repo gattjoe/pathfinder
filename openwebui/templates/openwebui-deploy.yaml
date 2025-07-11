@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-openwebui"
+  namespace: openwebui
+  labels:
+    app: openwebui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openwebui
+  template:
+    metadata:
+      labels:
+        app: openwebui
+    spec:
+      containers:
+        - name: openwebui
+          image: "{{ .Values.image.repository }}"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8888
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "1"
+            limits:
+              memory: "2048Mi"
+              cpu: "2"
+          env:
+            - name: OLLAMA_BASE_URL
+              value: { { .Values.env.OLLAMA_BASE_URL | quote } }
+            - name: WEBUI_AUTH
+              value: "false"
+            - name: WEBUI_URL
+              value: { { .Values.ingress.hosts | quote } }
+            - name: PORT
+              value: "8888"
+            - name: WEBUI_SESSION_COOKIE_SAME_SITE
+              value: "strict"
+            - name: WEBUI_SESSION_COOKIE_SECURE
+              value: "True"
+          volumeMounts:
+            - name: openwebui-local-volume
+              mountPath: /app/backend/data
+      volumes:
+        - name: openwebui-local-volume
+          persistentVolumeClaim:
+            claimName: openwebui-local-claim

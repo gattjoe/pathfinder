@@ -9,6 +9,6 @@ resources:
   - base/distribution.yaml
   - base/graf.yaml
   - base/ingress-nginx.yaml
-  #  - base/openwebui.yaml
+  - base/openwebui.yaml
   - base/prom.yaml
   - base/sync-argocd-apps.yaml

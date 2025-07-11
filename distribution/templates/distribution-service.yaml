@@ -9,6 +9,6 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
-      name: distribution-service
+      name: "{{ .Release.Name }}-distribution-service"
   type: LoadBalancer
   externalTrafficPolicy: Local
