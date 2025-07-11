@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: distribution-service
+  name: "{{ .Release.Name }}-distribution-service"
   namespace: distribution
 spec:
   selector:

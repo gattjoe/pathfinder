@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: distribution-cm
+  name: "{{ .Release.Name }}-distribution-cm"
   namespace: distribution
 data:
   config.yml: |

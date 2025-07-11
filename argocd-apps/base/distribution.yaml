@@ -20,8 +20,10 @@ spec:
         repoURL: https://github.com/gattjoe/pathfinder.git
         targetRevision: 3.0.0
         chart: distribution
+        helm:
+          releaseName: "{{.server}}"
       destination:
-        server: "{{.server}}"
+        server: { { .server } }
         namespace: distribution
       syncPolicy:
         syncOptions:
