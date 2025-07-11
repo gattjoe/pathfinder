@@ -1,33 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
   name: distribution
   namespace: argocd
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
-  generators:
-    - clusters:
-        selector:
-          matchLabels:
-            name: maul
-  template:
-    metadata:
-      name: distribution
-    spec:
-      project: default
-      source:
-        repoURL: https://github.com/gattjoe/pathfinder.git
-        targetRevision: 3.0.0
-        chart: distribution
-        helm:
-          releaseName: maul
-      destination:
-        server: maul
-        namespace: distribution
-      syncPolicy:
-        syncOptions:
-          - CreateNamespace=true
-        automated:
-          prune: true
-          selfHeal: true
+  project: default
+  source:
+    repoURL: https://github.com/gattjoe/pathfinder.git
+    targetRevision: 3.0.0
+    chart: distribution
+    helm:
+      releaseName: maul
+  destination:
+    server: maul
+    namespace: distribution
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
