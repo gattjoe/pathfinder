@@ -52,10 +52,10 @@ spec:
             - name: blocky-local-volume
               mountPath: /dnsLogs
       volumes:
-        - name: "{{ .Release.Name }}-blocky-cm"
+        - name: blocky-config
           configMap:
             defaultMode: 420
-            name: blocky-config
+            name: "{{ .Release.Name }}-blocky-cm"
         - name: blocky-local-volume
           persistentVolumeClaim:
             claimName: blocky-local-claim
