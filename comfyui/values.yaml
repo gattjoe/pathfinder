@@ -1,0 +1,9 @@
+env:
+  OLLAMA_BASE_URL: "http://r2d2.echobase.network:11434"
+
+image:
+  repository: nginx:1.29.0-alpine-slim@sha256:e4e764cb35f666f44dd4e1da4291a5f73bb8bff2a9464ccecd8a05a2b7226ad5
+
+ingress:
+  hosts: comfyui.echobase.network
+  host: comfyui.echobase.network

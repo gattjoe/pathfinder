@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-comfyui-proxy"
+  namespace: comfyui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: comfyui-proxy
+  template:
+    metadata:
+      labels:
+        app: comfyui-proxy
+    spec:
+      containers:
+        - name: nginx
+          image: "{{ .Values.image.repository }}"
+          ports:
+            - containerPort: 8081
+          volumeMounts:
+            - name: comfyui-nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+      volumes:
+        - name: comfyui-nginx-config
+          configMap:
+            defaultMode: 420
+            name: "{{ .Release.Name }}-comfyui-nginx-config"
