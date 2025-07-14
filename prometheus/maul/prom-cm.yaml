@@ -123,10 +123,10 @@ data:
             regex: ([^:]+)(?::\d+)?;(\d+)
             replacement: $1:$2
 
-      #- job_name: 'blocky'
-      #  scheme: https
-      #  static_configs:
-      #    - targets: ['blocky.echobase.network']
+      - job_name: 'blocky'
+        scheme: https
+        static_configs:
+          - targets: ['blocky.echobase.network']
 
       #- job_name: 'federate'
       #  scheme: https
