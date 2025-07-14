@@ -2,7 +2,7 @@ env:
   cluster: "maul"
 
 image:
-  repository: ghcr.io/0xerr0r/blocky:v0.26.2@sha256:b1706e0eaef4e99733fbbc8f0bb5f0d30e208011968069b5035e453268e8e21f
+  repository: spx01/blocky:v0.26.2@sha256:b1706e0eaef4e99733fbbc8f0bb5f0d30e208011968069b5035e453268e8e21f
 
 ingress:
   hosts: blocky.echobase.network
