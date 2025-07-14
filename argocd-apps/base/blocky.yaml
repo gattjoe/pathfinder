@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: blocky
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/gattjoe/pathfinder.git
+    path: blocky
+    targetRevision: HEAD
+    helm:
+      releaseName: maul
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: blocky
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

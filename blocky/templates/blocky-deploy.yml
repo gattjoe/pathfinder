@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Release.Name }}-blocky"
+  namespace: blocky
+  labels:
+    app: blocky
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blocky
+  template:
+    metadata:
+      labels:
+        app: blocky
+    spec:
+      hostname: blocky
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10000
+        fsGroup: 20000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: blocky
+          image: "{{ .Values.image.repository }}"
+          imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "250m"
+            limits:
+              memory: "500Mi"
+              cpu: "500m"
+          env:
+            - name: TZ
+              value: "America/New_York"
+          volumeMounts:
+            - mountPath: /app/config.yml
+              name: blocky-config
+              subPath: config.yml
+            - name: blocky-local-volume
+              mountPath: /dnsLogs
+      volumes:
+        - name: "{{ .Release.Name }}-blocky-cm"
+          configMap:
+            defaultMode: 420
+            name: blocky-config
+        - name: blocky-local-volume
+          persistentVolumeClaim:
+            claimName: blocky-local-claim

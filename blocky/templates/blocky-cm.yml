@@ -1,0 +1,128 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ .Release.Name }}-blocky-cm"
+  namespace: blocky
+data:
+  config.yml: |
+    upstreams:
+      init:
+        strategy: blocking
+      groups:
+        # OpenDNS for now
+        default:
+          - 208.67.222.222:53
+          - 208.67.220.220:53
+      strategy: parallel_best
+      timeout: 2s
+
+    connectIPVersion: v4
+
+    clientLookup:
+      clients:
+        andym1:
+          - 192.168.4.210
+        andyiphone:
+          - 192.168.4.145
+        mrblack:
+          - 192.168.4.241
+        nestprotect:
+          - 192.168.2.164
+        upstairsnest:
+          - 192.168.2.139
+        familyroomnest:
+          - 192.168.2.228
+        lutron:
+          - 192.168.2.204
+        porchtv:
+          - 192.168.2.150
+        peloton:
+          - 192.168.2.59
+
+        # Game consoles
+        nintendoswitch:
+          - 192.168.2.36
+        xbox:
+          - 192.168.2.20
+
+        # Alexa
+        enzoechodot:
+          - 192.168.2.114
+        kitchenalexa:
+          - 192.168.2.99
+        ninoechodot:
+          - 192.168.2.38
+        r2:
+          - 192.168.2.51
+
+        # Chromebook
+        francescachromebook:
+          - 192.168.2.106
+        ninochromebook:
+          - 192.168.2.195
+
+    blocking:
+      blockType: zeroIP
+
+      loading:
+        refreshPeriod: 4h
+        downloads:
+          timeout: 1m
+          attempts: 5
+          cooldown: 10s
+        maxErrorsPerSource: 10
+        concurrency: 5
+
+      denylists:
+        malware:
+          - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+          - https://urlhaus.abuse.ch/downloads/hostfile/
+          - https://phishing.army/download/phishing_army_blocklist_extended.txt
+          #- https://v.firebog.net/hosts/RPiList-Malware.txt
+        ads:
+          - https://v.firebog.net/hosts/Easyprivacy.txt
+          - https://v.firebog.net/hosts/Prigent-Ads.txt
+
+      allowlists:
+        ads:
+          - |
+            aa.online-metrix.net
+            disney.demdex.net
+            analytics.disneyplus.com
+            adservice.google.com
+            saa.paramountplus.com
+            conviva.com
+            email.accounts.playmetrics.com
+            tags.tiqcdn.com
+            cbsinteractive.data.adobedc.net
+
+      clientGroupsBlock:
+        default:
+          - ads
+          - malware
+
+    prometheus:
+      enable: true
+
+    ports:
+      dns: 53
+      http: 4000
+
+    queryLog:
+      # optional one of: mysql, postgresql, timescale, csv
+      type: csv
+      # directory for csv, db connection string for postgresql
+      target: /dnsLogs
+
+      logRetentionDays: 365
+      creationAttempts: 1
+      creationCooldown: 2s
+      # optional: Which fields should be logged. You can choose one or more from: clientIP, clientName, responseReason, responseAnswer, question, duration. If not defined, it logs all fields
+      fields:
+        - clientIP
+        - clientName
+        - question
+        - responseReason
+        - responseAnswer
+        - duration
+      flushInterval: 30s

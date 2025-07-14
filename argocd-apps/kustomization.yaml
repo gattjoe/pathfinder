@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: argocd
 resources:
   - base/argo-cd.yaml
+  - base/blocky.yaml
   - base/cert-manager.yaml
   - base/cluster-config.yaml
   - base/distribution.yaml
