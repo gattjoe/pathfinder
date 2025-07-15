@@ -31,7 +31,7 @@ data:
         prometheus:
           enabled: true
           path: /metrics
-      host: https://registry.echobase.network
+      host: http://registry.echobase.network:5000
       headers:
         X-Content-Type-Options: [nosniff]
       http2:
