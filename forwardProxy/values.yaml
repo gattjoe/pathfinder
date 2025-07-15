@@ -2,7 +2,7 @@
 #  OLLAMA_BASE_URL: "http://r2d2.echobase.network:11434"
 
 image:
-  repository: https://registry.echobase.network:5000/forwardproxy:071525
+  repository: registry.echobase.network:5000/forwardproxy:071525
 #  port: 8081
 #  targetPort: 8081
 #ingress:
