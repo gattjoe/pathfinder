@@ -51,8 +51,8 @@ spec:
   selector:
     app: forward-proxy
   ports:
-    - port: "{{ .Values.service.port }}"
-      targetPort: "{{ .Values.service.targetPort }}"
+    - port: 8081
+      targetPort: 8081
       name: http
       protocol: TCP
   type: LoadBalancer
@@ -76,4 +76,4 @@ spec:
               service:
                 name: "{{ .Release.Name }}-forward-proxy-service"
                 port:
-                  number: "{{ .Values.service.port }}"
+                  number: 8081

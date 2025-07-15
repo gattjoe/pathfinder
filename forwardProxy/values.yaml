@@ -3,8 +3,8 @@
 
 image:
   repository: https://registry.echobase.network:5000/forwardproxy:071525
-  port: 8081
-  targetPort: 8081
+#  port: 8081
+#  targetPort: 8081
 #ingress:
 #  hosts: comfyui.echobase.network
 #  host: comfyui.echobase.network
