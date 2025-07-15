@@ -48,12 +48,12 @@ data:
         # Alexa
         enzoechodot:
           - 192.168.2.114
-        kitchenalexa:
-          - 192.168.2.99
         ninoechodot:
           - 192.168.2.38
-        r2:
+        kitchenecho:
           - 192.168.2.51
+        francescaecho:
+          - 192.168.2.165
 
         # Chromebook
         francescachromebook:
