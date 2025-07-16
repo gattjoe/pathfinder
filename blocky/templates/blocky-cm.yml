@@ -24,12 +24,18 @@ data:
           - 192.168.4.210
         andyiphone:
           - 192.168.4.145
+        cope:
+          - 192.168.4.200
+        francescaapplewatch:
+          - 192.168.4.103
+        francescanewipad:
+          - 192.168.4.105
+        class0:
+          - 192.168.4.117
         mrblack:
           - 192.168.4.241
         samsunggalaxyx:
           - 192.168.4.211
-        class0:
-          - 192.168.4.117
 
         # IOT
         familyroomnest:
