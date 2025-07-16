@@ -24,6 +24,8 @@ data:
           - 192.168.4.210
         andyiphone:
           - 192.168.4.145
+        applewatch:
+          - 192.168.4.239
         cope:
           - 192.168.4.200
         francescaapplewatch:
@@ -34,6 +36,10 @@ data:
           - 192.168.4.117
         mrblack:
           - 192.168.4.241
+        ninoapplewatch:
+          - 192.168.4.138
+        ninoipad:
+          - 192.168.4.158
         samsunggalaxyx:
           - 192.168.4.211
 
@@ -113,12 +119,22 @@ data:
             aa.online-metrix.net
             disney.demdex.net
             analytics.disneyplus.com
-            adservice.google.com
             saa.paramountplus.com
             conviva.com
             email.accounts.playmetrics.com
             tags.tiqcdn.com
             cbsinteractive.data.adobedc.net
+            int.vaicore.site
+            paramountplus.com.data.adobedc.net
+            track.canva.com
+            pagead2.googlesyndication.com
+            pubads.g.doubleclick.net
+            click.messages.psncenergy.com
+            email.pmsends.com
+            learn.cisecurity.org
+            click.discord.com
+            links.h6.hilton.com
+            get.venmo.com
 
       clientGroupsBlock:
         default:
