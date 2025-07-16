@@ -28,6 +28,8 @@ data:
           - 192.168.4.241
         samsunggalaxyx
           - 192.168.4.211
+        class0
+          - 192.168.4.117
 
         # IOT
         familyroomnest:
