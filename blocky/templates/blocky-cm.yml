@@ -26,9 +26,9 @@ data:
           - 192.168.4.145
         mrblack:
           - 192.168.4.241
-        samsunggalaxyx
+        samsunggalaxyx:
           - 192.168.4.211
-        class0
+        class0:
           - 192.168.4.117
 
         # IOT
@@ -44,17 +44,17 @@ data:
           - 192.168.2.139
 
         # TV
-        familyroomappletv
+        familyroomappletv:
           - 192.168.4.44
-        gymappletv
+        gymappletv:
           - 192.168.4.78
-        gymtv
+        gymtv:
           - 192.168.2.70
-        officeappletv
+        officeappletv:
           - 192.168.4.93
         porchtv:
           - 192.168.2.150
-        upstairsappletv
+        upstairsappletv:
           - 192.168.4.151
 
         # Game consoles
