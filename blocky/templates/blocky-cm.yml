@@ -26,18 +26,34 @@ data:
           - 192.168.4.145
         mrblack:
           - 192.168.4.241
-        nestprotect:
-          - 192.168.2.164
-        upstairsnest:
-          - 192.168.2.139
+        samsunggalaxyx
+          - 192.168.4.211
+
+        # IOT
         familyroomnest:
           - 192.168.2.228
         lutron:
           - 192.168.2.204
-        porchtv:
-          - 192.168.2.150
+        nestprotect:
+          - 192.168.2.164
         peloton:
           - 192.168.2.59
+        upstairsnest:
+          - 192.168.2.139
+
+        # TV
+        familyroomappletv
+          - 192.168.4.44
+        gymappletv
+          - 192.168.4.78
+        gymtv
+          - 192.168.2.70
+        officeappletv
+          - 192.168.4.93
+        porchtv:
+          - 192.168.2.150
+        upstairsappletv
+          - 192.168.4.151
 
         # Game consoles
         nintendoswitch:
