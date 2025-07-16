@@ -104,14 +104,17 @@ data:
         concurrency: 5
 
       denylists:
+        ads:
+          - https://adaway.org/hosts.txt
+          - https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
+          - https://v.firebog.net/hosts/Easyprivacy.txt
+          - https://v.firebog.net/hosts/Prigent-Ads.txt
+
         malware:
           - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
           - https://urlhaus.abuse.ch/downloads/hostfile/
           - https://phishing.army/download/phishing_army_blocklist_extended.txt
           #- https://v.firebog.net/hosts/RPiList-Malware.txt
-        ads:
-          - https://v.firebog.net/hosts/Easyprivacy.txt
-          - https://v.firebog.net/hosts/Prigent-Ads.txt
 
       allowlists:
         ads:
