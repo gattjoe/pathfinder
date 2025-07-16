@@ -24,6 +24,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: distribution-service
+                name: "{{ .Release.Name }}-distribution-service"
                 port:
                   number: 5000
