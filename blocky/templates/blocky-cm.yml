@@ -106,7 +106,6 @@ data:
       denylists:
         ads:
           - https://adaway.org/hosts.txt
-          - https://gitlab.com/quidsup/notrack-blocklists/raw/master/notrack-blocklist.txt
           - https://v.firebog.net/hosts/Easyprivacy.txt
           - https://v.firebog.net/hosts/Prigent-Ads.txt
 
