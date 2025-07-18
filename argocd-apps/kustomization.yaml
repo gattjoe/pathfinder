@@ -8,7 +8,7 @@ resources:
   - base/cert-manager.yaml
   - base/cluster-config.yaml
   - base/distribution.yaml
-  - base/forwardproxy.yaml
+  #- base/forwardproxy.yaml
   - base/graf.yaml
   - base/ingress-nginx.yaml
   - base/openwebui.yaml
