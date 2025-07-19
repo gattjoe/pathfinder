@@ -24,7 +24,7 @@ spec:
         prometheus.io/scheme: "http"
         prometheus.io/path: "/metrics"
   destination:
-    server: vader
+    server: https://vader.echobase.network:6443
     namespace: ingress-nginx
   syncPolicy:
     syncOptions:
