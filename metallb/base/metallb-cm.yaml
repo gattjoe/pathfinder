@@ -34,7 +34,7 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: 24
+  aggregationLength: 25
   localPref: 100
   communities:
     - 65535:65282
@@ -47,7 +47,7 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: 24
+  aggregationLength: 25
   localPref: 100
   peers:
     - echobase
