@@ -25,7 +25,7 @@ spec:
         repoURL: https://github.com/gattjoe/pathfinder
         targetRevision: HEAD
         helm:
-          releaseName: "testsvr-{{.name}}"
+          releaseName: "{{.name}}"
       destination:
         server: "{{.server}}"
         namespace: testserver
