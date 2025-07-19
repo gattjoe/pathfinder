@@ -17,7 +17,7 @@ spec:
             name: "kenobi"
   template:
     metadata:
-      name: testserver
+      name: "testserver-{{.name}}"
     spec:
       project: default
       source:
