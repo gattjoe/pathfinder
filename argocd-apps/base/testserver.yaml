@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: testsvr
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "kenobi"
+  template:
+    metadata:
+      name: testsvr
+    spec:
+      project: default
+      source:
+        path: testserver
+        repoURL: https://github.com/gattjoe/pathfinder
+        targetRevision: HEAD
+        helm:
+          releaseName: "testsvr{{.name}}"
+      destination:
+        server: "{{.server}}"
+        namespace: testserver
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true

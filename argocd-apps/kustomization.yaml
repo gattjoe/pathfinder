@@ -17,3 +17,4 @@ resources:
   - base/openwebui.yaml
   - base/prom.yaml
   - base/sync-argocd-apps.yaml
+  - base/testserver.yaml
