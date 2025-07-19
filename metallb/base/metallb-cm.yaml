@@ -1,0 +1,53 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: ipv4-pool
+  namespace: metallb-system
+spec:
+  addresses:
+    - 192.168.8.0/24
+#---
+#apiVersion: metallb.io/v1beta1
+#kind: L2Advertisement
+#metadata:
+#  name: l2
+#  namespace: metallb-system
+#spec:
+#  ipAddressPools:
+#    - ipv4-pool
+---
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: echobase
+  namespace: metallb-system
+spec:
+  myASN: 65502
+  peerASN: 65500
+  peerAddress: 192.168.3.1
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: bgp-local
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+    - ipv4-pool
+  aggregationLength: 24
+  localPref: 100
+  communities:
+    - 65535:65282
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: bgp-external
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+    - ipv4-pool
+  aggregationLength: 24
+  localPref: 100
+  peers:
+    - echobase
