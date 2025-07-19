@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: testsvr
+  name: testserver
   namespace: argocd
 spec:
   goTemplate: true
@@ -17,11 +17,11 @@ spec:
             name: "kenobi"
   template:
     metadata:
-      name: testsvr
+      name: testserver
     spec:
       project: default
       source:
-        path: testserver
+        path: testServer
         repoURL: https://github.com/gattjoe/pathfinder
         targetRevision: HEAD
         helm:
