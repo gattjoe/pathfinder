@@ -11,6 +11,7 @@ resources:
   #- base/forwardproxy.yaml
   - base/graf.yaml
   - base/ingress-nginx.yaml
+  - base/metallb.yaml
   - base/openwebui.yaml
   - base/prom.yaml
   - base/sync-argocd-apps.yaml
