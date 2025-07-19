@@ -6,6 +6,7 @@ resources:
   - base/default-project.yaml
   - base/argocd-ui-ingress.yaml
   - base/argocd-grpc-ingress.yaml
+  - base/pathfinder-repo.yaml
   - base/rollouts-extension.yaml
   #- base/kenobi-cluster.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml
