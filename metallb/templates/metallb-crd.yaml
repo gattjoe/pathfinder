@@ -1,11 +1,3 @@
-apiVersion: metallb.io/v1beta1
-kind: IPAddressPool
-metadata:
-  name: ipv4-pool
-  namespace: metallb-system
-spec:
-  addresses:
-    - "{{ .Values.subnet }}"
 #---
 #apiVersion: metallb.io/v1beta1
 #kind: L2Advertisement
@@ -22,7 +14,8 @@ metadata:
   name: echobase
   namespace: metallb-system
 spec:
-  myASN: "{{ .Values.asn | int }}"
+  #myASN: "{{ .Values.asn | int }}"
+  myASN: 65501
   peerASN: 65500
   peerAddress: 192.168.3.1
 ---
@@ -34,7 +27,8 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: "{{ .Values.aggregationLength | int }}"
+  aggregationLength: 25
+  #aggregationLength: "{{ .Values.aggregationLength | int }}"
   localPref: 100
   communities:
     - 65535:65282
@@ -47,7 +41,8 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: "{{ .Values.aggregationLength | int }}"
+  aggregationLength: 25
+  #aggregationLength: "{{ .Values.aggregationLength | int }}"
   localPref: 100
   peers:
     - echobase
