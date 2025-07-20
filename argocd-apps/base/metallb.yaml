@@ -29,7 +29,7 @@ spec:
           valueFiles:
             - values-{{.name}}.yaml
       destination:
-        server: {{ .server }}
+        server: "{{.server}}"
         namespace: metallb-system
       syncPolicy:
         syncOptions:
