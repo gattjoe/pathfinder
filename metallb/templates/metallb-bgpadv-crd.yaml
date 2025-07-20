@@ -6,8 +6,7 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: 25
-  #aggregationLength: "{{ .Values.aggregationLength | int }}"
+  aggregationLength: {{ .Values.aggregationLength }}
   localPref: 100
   communities:
     - 65535:65282
@@ -20,8 +19,7 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: 25
-  #aggregationLength: "{{ .Values.aggregationLength | int }}"
+  aggregationLength: {{ .Values.aggregationLength }}
   localPref: 100
   peers:
     - echobase
