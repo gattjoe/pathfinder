@@ -22,7 +22,7 @@ metadata:
   name: echobase
   namespace: metallb-system
 spec:
-  myASN: { { int .Values.asn } }
+  myASN: "{{ atoi .Values.asn }}"
   peerASN: 65500
   peerAddress: 192.168.3.1
 ---
@@ -34,7 +34,7 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: { { int .Values.aggregationlength } }
+  aggregationLength: "{{ atoi .Values.aggregationlength }}"
   localPref: 100
   communities:
     - 65535:65282
@@ -47,7 +47,7 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: { { int .Values.aggregationlength } }
+  aggregationLength: "{{ atoi .Values.aggregationlength }}"
   localPref: 100
   peers:
     - echobase
