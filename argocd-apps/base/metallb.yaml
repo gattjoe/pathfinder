@@ -24,7 +24,7 @@ spec:
           releaseName: "metallb-{{.name}}"
           valuesObject:
             subnet: 192.168.8.0/25
-            asn: "65501"
+            #asn: "65501"
             aggregationlength: 25
       destination:
         server: "{{.server}}"
