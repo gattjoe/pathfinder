@@ -22,7 +22,7 @@ metadata:
   name: echobase
   namespace: metallb-system
 spec:
-  myASN: "{{ atoi .Values.asn }}"
+  myASN: "{{ toString .Values.asn }}"
   peerASN: 65500
   peerAddress: 192.168.3.1
 ---
