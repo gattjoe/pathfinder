@@ -1,0 +1,10 @@
+apiVersion: metallb.io/v1beta2
+kind: BGPPeer
+metadata:
+  name: echobase
+  namespace: metallb-system
+spec:
+  myASN: "{{ .Values.asn | int }}"
+  #myASN: 65501
+  peerASN: 65500
+  peerAddress: 192.168.3.1
