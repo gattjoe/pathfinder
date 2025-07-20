@@ -22,7 +22,7 @@ metadata:
   name: echobase
   namespace: metallb-system
 spec:
-  myASN: 65501
+  myASN: { { int .Values.asn } }
   peerASN: 65500
   peerAddress: 192.168.3.1
 ---
