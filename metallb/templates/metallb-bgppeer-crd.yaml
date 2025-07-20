@@ -4,7 +4,7 @@ metadata:
   name: echobase
   namespace: metallb-system
 spec:
-  #myASN: "{{ .Values.myASN }}"
-  myASN: 65501
+  myASN: { { .Values.myASN } }
+  #myASN: 65501
   peerASN: 65500
   peerAddress: 192.168.3.1
