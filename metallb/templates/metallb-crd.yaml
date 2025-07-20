@@ -47,7 +47,7 @@ metadata:
 spec:
   ipAddressPools:
     - ipv4-pool
-  aggregationLength: "{ { .Values.aggregationlength } }"
+  aggregationLength: "{ { .Values.aggregationLength } }"
   localPref: 100
   peers:
     - echobase
