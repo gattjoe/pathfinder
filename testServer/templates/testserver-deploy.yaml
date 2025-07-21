@@ -41,5 +41,6 @@ data:
     <html>
     <head>
       <title>{{ .Release.Name }}</title>
+      <body>{{ .Release.Name }}</body>
     </head>
     </html>
