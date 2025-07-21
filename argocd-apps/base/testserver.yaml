@@ -28,7 +28,7 @@ spec:
           releaseName: "{{.name}}"
           valuesObject:
             ingress:
-              host: "{{.name}}-test.echobase.network"
+              host: "test.echobase.network"
       destination:
         server: "{{.server}}"
         namespace: testserver
