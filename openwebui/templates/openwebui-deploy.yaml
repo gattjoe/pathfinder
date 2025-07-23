@@ -29,18 +29,36 @@ spec:
               memory: "2048Mi"
               cpu: "2"
           env:
+            - name: ENABLE_ADMIN_EXPORT
+              value: "false"
+            - name: ENABLE_FORWARD_USER_INFO_HEADERS
+              value: "false"
+            - name: ENABLE_OLLAMA_API
+              value: "true"
+            - name: ENABLE_OPENAI_API
+              value: "false"
+            - name: ENABLE_PERSISTENT_CONFIG
+              value: "false"
             - name: OLLAMA_BASE_URL
+              value: "{{ .Values.env.OLLAMA_BASE_URL }}"
+            - name: OFFLINE_MODE
+              value: "true"
+            - name: PORT
+              value: "8888"
+            - name: RAG_EMBEDDING_ENGINE
+              value: "ollama"
+            - name: RAG_OLLAMA_BASE_URL
               value: "{{ .Values.env.OLLAMA_BASE_URL }}"
             - name: WEBUI_AUTH
               value: "false"
-            - name: WEBUI_URL
-              value: "{{ .Values.ingress.hosts }}"
-            - name: PORT
-              value: "8888"
+            - name: WEBUI_AUTH_COOKIE_SECURE
+              value: "true"
             - name: WEBUI_SESSION_COOKIE_SAME_SITE
               value: "strict"
             - name: WEBUI_SESSION_COOKIE_SECURE
-              value: "True"
+              value: "true"
+            - name: WEBUI_URL
+              value: "{{ .Values.ingress.hosts }}"
           volumeMounts:
             - name: openwebui-local-volume
               mountPath: /app/backend/data
