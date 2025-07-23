@@ -21,7 +21,7 @@ spec:
         path: prometheus
         targetRevision: HEAD
         helm:
-          releaseName: prometheus-{{.name}}
+          releaseName: "{{.name}}"
           valueFiles:
             - values-{{.name}}.yaml
       destination:
