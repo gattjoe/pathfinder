@@ -9,6 +9,7 @@ resources:
   - base/pathfinder-repo.yaml
   - base/rollouts-extension.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml
+  - base/argocd-cluster-secret.yaml
 
 components:
   - https://github.com/argoproj-labs/argocd-extensions/manifests

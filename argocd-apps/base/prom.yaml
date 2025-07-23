@@ -7,13 +7,13 @@ spec:
   goTemplate: true
   goTemplateOptions: ["missingkey=error"]
   generators:
-  - list:
-    elements:
-    - cluster: maul
-      url: https://kubernetes.default.svc
+    - clusters:
+        selector:
+          matchLabels:
+            name: "maul"
   template:
     metadata:
-      name: prometheus-{{.cluster}}
+      name: prometheus-{{.name}}
     spec:
       project: default
       source:
@@ -21,11 +21,11 @@ spec:
         path: prometheus
         targetRevision: HEAD
         helm:
-          releaseName: prometheus-{{.cluster}}
+          releaseName: prometheus-{{.name}}
           valueFiles:
-            - values-{{.cluster}}.yaml
+            - values-{{.name}}.yaml
       destination:
-        server: "{{.url}}"
+        server: "{{.server}}"
         namespace: monitoring
       syncPolicy:
         syncOptions:
