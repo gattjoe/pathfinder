@@ -3,8 +3,6 @@ kind: ConfigMap
 metadata:
   name: "{{ .Release.Name }}-prometheus-config"
   namespace: monitoring
-  labels:
-    name: monitoring
 data:
   prometheus.yml: |
     global:

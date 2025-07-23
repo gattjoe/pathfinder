@@ -9,7 +9,7 @@ resources:
   - base/cluster-config.yaml
   - base/distribution.yaml
   #- base/forwardproxy.yaml
-  #- base/graf.yaml
+  - base/graf.yaml
   - base/ingress-nginx.yaml
   - base/ingress-nginx-kenobi.yaml
   - base/ingress-nginx-vader.yaml
