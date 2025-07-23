@@ -18,10 +18,10 @@ spec:
     required:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: node-role.kubernetes.io/master
+            - key: kubernetes.io/hostname
               operator: In
               values:
-                - "true"
+                - "{{ .Release.Name }}"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
