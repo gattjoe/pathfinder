@@ -22,6 +22,8 @@ spec:
         targetRevision: HEAD
         helm:
           releaseName: prometheus-{{.name}}
+          valueFiles:
+            - values-{{.name}}.yaml
       destination:
         server: "{{.server}}"
         namespace: monitoring
