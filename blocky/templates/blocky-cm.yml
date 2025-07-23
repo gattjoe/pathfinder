@@ -21,7 +21,7 @@ data:
     clientLookup:
       clients:
         andym1:
-          - 192.168.4.210
+          - 192.168.4.131
         andyiphone:
           - 192.168.4.145
         applewatch:
