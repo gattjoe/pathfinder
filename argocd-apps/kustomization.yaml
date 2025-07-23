@@ -15,6 +15,6 @@ resources:
   - base/ingress-nginx-vader.yaml
   - base/metallb.yaml
   - base/openwebui.yaml
-  - base/prom.yaml
+  #- base/prom.yaml
   - base/sync-argocd-apps.yaml
   - base/testserver.yaml
