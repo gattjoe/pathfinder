@@ -11,6 +11,14 @@ spec:
         selector:
           matchLabels:
             name: "maul"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "kenobi"
   template:
     metadata:
       name: prometheus-{{.name}}
