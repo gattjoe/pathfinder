@@ -1,22 +1,35 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: cert-manager
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/gattjoe/pathfinder.git
-    path: cert-manager
-    targetRevision: HEAD
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: cert-manager
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "maul"
+  template:
+    metadata:
+      name: cert-manager-{{.name}}
+  spec:
+    project: default
+    source:
+      repoURL: https://github.com/gattjoe/pathfinder.git
+      path: cert-manager
+      targetRevision: HEAD
+      helm:
+        releaseName: "{{.name}}"
+    destination:
+      server: "{{.server}}"
+      namespace: cert-manager
+    syncPolicy:
+      syncOptions:
+        - CreateNamespace=true
+      automated:
+        prune: true
+        selfHeal: true
