@@ -23,17 +23,6 @@ spec:
             environment: AzurePublicCloud
         selector:
           dnsNames:
-            - "pihole.echobase.network"
-            - "dashboard.echobase.network"
-            - "registry.echobase.network"
-            - "ollama.echobase.network"
-            - "redis.echobase.network"
-            - "devregistry.echobase.network"
-            - "comfyui.echobase.network"
-            - "monitoring.echobase.network"
-            - "blocky.echobase.network"
-            - "ingress.metrics.vader.echobase.network"
-            - "openwebui.echobase.network"
-            - "qdrant.echobase.network"
-            - "argocd.echobase.network"
-            - "grpc.argocd.echobase.network"
+            {{- range .Values.dnsNames }}
+              - {{ . }}
+            {{- end }}
