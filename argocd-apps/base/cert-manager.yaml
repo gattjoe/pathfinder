@@ -13,6 +13,14 @@ spec:
         selector:
           matchLabels:
             name: "maul"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "kenobi"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
   template:
     metadata:
       name: cert-manager-{{.name}}
