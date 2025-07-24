@@ -16,20 +16,20 @@ spec:
   template:
     metadata:
       name: cert-manager-{{.name}}
-  spec:
-    project: default
-    source:
-      repoURL: https://github.com/gattjoe/pathfinder.git
-      path: cert-manager
-      targetRevision: HEAD
-      helm:
-        releaseName: "{{.name}}"
-    destination:
-      server: "{{.server}}"
-      namespace: cert-manager
-    syncPolicy:
-      syncOptions:
-        - CreateNamespace=true
-      automated:
-        prune: true
-        selfHeal: true
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/gattjoe/pathfinder.git
+        path: cert-manager
+        targetRevision: HEAD
+        helm:
+          releaseName: "{{.name}}"
+      destination:
+        server: "{{.server}}"
+        namespace: cert-manager
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
