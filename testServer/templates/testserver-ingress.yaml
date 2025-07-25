@@ -5,6 +5,10 @@ metadata:
   namespace: testserver
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - "{{ .Values.ingress.hosts }}"
+      secretName: testserver-prod-tls
   rules:
     - host: "{{ .Values.ingress.host }}"
       http:

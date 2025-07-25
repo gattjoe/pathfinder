@@ -3,3 +3,4 @@ image:
 
 ingress:
   host: test.echobase.network
+  hosts: test.echobase.network
