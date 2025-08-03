@@ -110,12 +110,10 @@ data:
           - https://adaway.org/hosts.txt
           - https://v.firebog.net/hosts/Easyprivacy.txt
           - https://v.firebog.net/hosts/Prigent-Ads.txt
-
-        malware:
           - https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+        malware:
           - https://urlhaus.abuse.ch/downloads/hostfile/
           - https://phishing.army/download/phishing_army_blocklist_extended.txt
-          #- https://v.firebog.net/hosts/RPiList-Malware.txt
 
       allowlists:
         ads:
@@ -143,6 +141,10 @@ data:
       clientGroupsBlock:
         default:
           - ads
+          - malware
+        andym1:
+          - malware
+        andyiphone:
           - malware
 
     prometheus:
