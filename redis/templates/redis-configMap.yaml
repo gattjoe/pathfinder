@@ -5,7 +5,7 @@ metadata:
   namespace: redis
 data:
   redis.conf: |
-    cluster-enabled yes
+    cluster-enabled no
     cluster-require-full-coverage no
     cluster-node-timeout 15000
     cluster-config-file /data/nodes.conf
