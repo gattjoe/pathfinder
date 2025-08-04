@@ -19,7 +19,7 @@ spec:
           image: "{{ .Values.image.repository }}"
           imagePullPolicy: Always
           command: ['redis-server']
-          args: ["/etc/redis/redis.conf", "--requirepass", "$(SECRET_PASSWORD)"]
+          args: ["/etc/redis/redis.conf", "--requirepass", "$(REDIS_PASSWORD)"]
           env:
             - name: REDIS_CLUSTER_ANNOUNCE_IP
               valueFrom:
