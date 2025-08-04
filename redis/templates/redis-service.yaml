@@ -13,4 +13,3 @@ spec:
       targetPort: 6379
   sessionAffinity: None
   type: ClusterIP
-  externalTrafficPolicy: Local
