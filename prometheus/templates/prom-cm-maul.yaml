@@ -97,6 +97,9 @@ data:
           - source_labels: [__meta_kubernetes_service_name]
             action: replace
             target_label: kubernetes_name
+          - source_labels: [__meta_kubernetes_namespace]
+            action: drop
+            target_label: redis
 
       - job_name: 'ingress-nginx-endpoints'
         scheme: http
