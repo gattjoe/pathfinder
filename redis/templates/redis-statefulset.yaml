@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: "{{ .Release.Name }}-redis-cluster"
+  namespace: redis
+spec:
+  serviceName: redis-cluster
+  replicas: "{{ .Values.spec.replicas }}"
+  selector:
+    matchLabels:
+      app: redis-cluster
+  template:
+    metadata:
+      labels:
+        app: redis-cluster
+    spec:
+      containers:
+        - name: redis
+          image: "{{ .Values.image.repository }}"
+          imagePullPolicy: Always
+          command: ['redis-server']
+          args: ["/etc/redis/redis.conf", "--requirepass", "$(SECRET_PASSWORD)"]
+          env:
+            - name: REDIS_CLUSTER_ANNOUNCE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: SECRET_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-default-secret
+                  key: PASSWORD
+          ports:
+            - containerPort: 6379
+              name: client
+            - containerPort: 16379
+              name: gossip
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: config-volume
+              mountPath: /etc/redis
+      volumes:
+        - name: config-volume
+          configMap:
+            name: redis-config
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ['ReadWriteOnce']
+        resources:
+          requests:
+            storage: 5Gi
