@@ -20,7 +20,7 @@ data:
     save 60 10000
 
     # Make secure defaults explicit
-    protected-mode no
+    protected-mode yes
     enable-protected-configs no
     enable-debug-command no
     enable-module-command no
