@@ -1,5 +1,5 @@
 image:
-  repository: redis-cluster:8.0.3@sha256:babd700c61a9acaab82ce1987c42244d6ae61141b9b9510ae29a49b294323627
+  repository: redis:8.0.3-bookworm@sha256:f957ce918b51f3ac10414244bedd0043c47db44a819f98b9902af1bd9d0afcea
 
 spec:
   replicas: 3
