@@ -14,10 +14,12 @@ data:
     save 300 10
     save 60 10000
 
-    user blocky on #a33408b3ba85345669f8831a523ed7938be6e31031c73c8381302f74d05ac08d allcommands allkeys
+    aclfile /etc/redis/users.acl
 
     # Make secure defaults explicit
     protected-mode yes
     enable-protected-configs no
     enable-debug-command no
     enable-module-command no
+  users.acl: |
+    user blocky on #a33408b3ba85345669f8831a523ed7938be6e31031c73c8381302f74d05ac08d allcommands allkeys
