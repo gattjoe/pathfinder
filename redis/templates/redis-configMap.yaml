@@ -14,7 +14,7 @@ data:
     save 300 10
     save 60 10000
 
-    USER blocky on nopass +@read +@write
+    USER blocky on #a33408b3ba85345669f8831a523ed7938be6e31031c73c8381302f74d05ac08d +@read +@write
 
     # Make secure defaults explicit
     protected-mode yes
