@@ -17,7 +17,7 @@ data:
     USER blocky on nopass +@read +@write
 
     # Make secure defaults explicit
-    protected-mode no
+    protected-mode yes
     enable-protected-configs no
     enable-debug-command no
     enable-module-command no
