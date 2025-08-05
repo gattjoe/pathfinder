@@ -19,6 +19,8 @@ data:
     save 300 10
     save 60 10000
 
+    USER blocky on nopass +@read +@write # yolo
+
     # Make secure defaults explicit
     protected-mode no
     enable-protected-configs no
