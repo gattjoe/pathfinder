@@ -18,7 +18,7 @@ data:
     save 60 10000
 
     # aclfile
-    aclfile /etc/redis/users.acl
+    #aclfile /etc/redis/users.acl
 
     # Make secure defaults explicit
     protected-mode yes
