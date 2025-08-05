@@ -22,6 +22,8 @@ spec:
           args:
             - "--requirepass"
             - "$(REDIS_PASSWORD)"
+            - "--loglevel"
+            - "debug"
           env:
             - name: REDIS_PASSWORD
               valueFrom:
