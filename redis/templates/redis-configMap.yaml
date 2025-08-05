@@ -25,5 +25,3 @@ data:
     enable-protected-configs no
     enable-debug-command no
     enable-module-command no
-
-    dir /data
