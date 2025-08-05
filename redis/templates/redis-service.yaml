@@ -12,4 +12,5 @@ spec:
       port: 6379
       targetPort: 6379
   sessionAffinity: None
-  type: ClusterIP # Keep redis unavailable outside the cluster
+  type: LoadBalancer
+  externalTrafficPolicy: Local
