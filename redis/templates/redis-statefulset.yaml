@@ -26,11 +26,6 @@ spec:
                 secretKeyRef:
                   name: redis-default-secret
                   key: PASSWORD
-            - name: BLOCKY_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: redis-blocky-secret
-                  key: PASSWORD
           ports:
             - containerPort: 6379
               name: client

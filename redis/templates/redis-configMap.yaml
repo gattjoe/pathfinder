@@ -14,7 +14,7 @@ data:
     save 300 10
     save 60 10000
 
-    USER blocky on >"($BLOCKY_PASSWORD)" +@read +@write
+    USER blocky on nopass +@read +@write
 
     # Make secure defaults explicit
     protected-mode no
