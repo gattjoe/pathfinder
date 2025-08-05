@@ -19,7 +19,7 @@ data:
     save 300 10
     save 60 10000
 
-    USER blocky on "$(BLOCKY_PASSWORD)" +@read +@write # yolo
+    USER blocky on >"$(BLOCKY_PASSWORD)" +@read +@write # yolo
 
     # Make secure defaults explicit
     protected-mode no
