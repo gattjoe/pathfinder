@@ -174,7 +174,7 @@ data:
       flushInterval: 30s
 
     redis:
-      address: redis.echobase.network:6379
+      address: 192.168.3.9:6379
       username: blocky
       connectionAttempts: 10
       connectionCooldown: 3s
