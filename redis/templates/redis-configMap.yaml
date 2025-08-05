@@ -21,4 +21,4 @@ data:
     enable-module-command no
 
     # yolo
-    user blocky on nopass +@all
+    user blocky on nopass ~* &* +@all
