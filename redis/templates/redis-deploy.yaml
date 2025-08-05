@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: "{{ .Release.Name }}-redis-cluster"
   namespace: redis
@@ -28,7 +28,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: redis-default-secret
-                  key: PASSWORD
+                  key: REDIS_PASSWORD
           ports:
             - containerPort: 6379
               name: client
