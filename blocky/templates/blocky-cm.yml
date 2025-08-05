@@ -172,3 +172,8 @@ data:
         - responseAnswer
         - duration
       flushInterval: 30s
+
+    redis:
+      address: redis.echobase.network:6379
+      username: blocky
+      password: ""
