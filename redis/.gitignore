@@ -1,1 +1,2 @@
 templates/redis-default-secret.yaml
+templates/redis-blocky-secret.yaml
