@@ -5,7 +5,7 @@ metadata:
   namespace: redis
 data:
   users.acl: |
-    user blocky on a33408b3ba85345669f8831a523ed7938be6e31031c73c8381302f74d05ac08d +@read +@write
+    user blocky on #a33408b3ba85345669f8831a523ed7938be6e31031c73c8381302f74d05ac08d +@read +@write
 
   redis-full.conf: |
     appendonly yes
