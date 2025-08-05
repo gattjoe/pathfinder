@@ -4,7 +4,7 @@ metadata:
   name: redis-config
   namespace: redis
 data:
-  redis-full.conf: |
+  redis.conf: |
     appendonly yes
     bind 0.0.0.0
     port 6379
