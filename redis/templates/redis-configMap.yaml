@@ -4,6 +4,9 @@ metadata:
   name: redis-config
   namespace: redis
 data:
+  users.acl: |
+    user blocky on #a33408b3ba85345669f8831a523ed7938be6e31031c73c8381302f74d05ac08d +@read +@write
+
   redis-full.conf: |
     appendonly yes
     bind 0.0.0.0
@@ -13,6 +16,9 @@ data:
     save 900 1
     save 300 10
     save 60 10000
+
+    # aclfile
+    #aclfile /etc/redis/users.acl
 
     # Make secure defaults explicit
     protected-mode yes

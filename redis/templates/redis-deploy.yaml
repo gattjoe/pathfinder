@@ -18,7 +18,8 @@ spec:
           image: "{{ .Values.image.repository }}"
           imagePullPolicy: Always
           command: ["redis-server"]
-          args: ["--requirepass $(REDIS_PASSWORD)", "--loglevel debug"]
+          args: ["--loglevel debug", "--aclfile /etc/redis/users.acl"]
+          #args: ["--requirepass $(REDIS_PASSWORD)", "--loglevel debug"]
           env:
             - name: REDIS_PASSWORD
               valueFrom:
