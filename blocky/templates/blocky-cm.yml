@@ -177,6 +177,6 @@ data:
       address: 192.168.3.9:6379
       username: blocky
       password: ""
-      required: true
+      required: false
       connectionAttempts: 10
       connectionCooldown: 3s
