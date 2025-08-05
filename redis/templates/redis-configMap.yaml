@@ -5,11 +5,6 @@ metadata:
   namespace: redis
 data:
   redis.conf: |
-    #cluster-enabled no
-    #cluster-require-full-coverage no
-    #cluster-node-timeout 15000
-    #cluster-config-file /data/nodes.conf
-    #cluster-migration-barrier 1
     appendonly yes
     bind 0.0.0.0
     port 6379
@@ -19,6 +14,7 @@ data:
     save 300 10
     save 60 10000
 
+    requirepass "$(REDIS_PASSWORD)"
     USER blocky on >"$(BLOCKY_PASSWORD)" +@read +@write
 
     # Make secure defaults explicit
