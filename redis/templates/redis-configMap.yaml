@@ -14,8 +14,7 @@ data:
     save 300 10
     save 60 10000
 
-    requirepass $REDIS_PASSWORD
-    USER blocky on >$BLOCKY_PASSWORD +@read +@write
+    USER blocky on >"($BLOCKY_PASSWORD)" +@read +@write
 
     # Make secure defaults explicit
     protected-mode no
