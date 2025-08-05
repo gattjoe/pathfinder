@@ -176,6 +176,5 @@ data:
     redis:
       address: redis.echobase.network:6379
       username: blocky
-      password: ""
       connectionAttempts: 10
       connectionCooldown: 3s
