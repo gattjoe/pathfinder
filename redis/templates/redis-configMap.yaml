@@ -21,7 +21,7 @@ data:
     aclfile /etc/redis/users.acl
 
     # Make secure defaults explicit
-    protected-mode yes
+    protected-mode no
     enable-protected-configs no
     enable-debug-command no
     enable-module-command no
