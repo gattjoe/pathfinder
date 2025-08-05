@@ -176,6 +176,7 @@ data:
     redis:
       address: 192.168.3.9:6379
       username: blocky
+      password: ""
       required: true
       connectionAttempts: 10
       connectionCooldown: 3s
