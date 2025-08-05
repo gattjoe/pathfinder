@@ -4,7 +4,6 @@ metadata:
   name: "{{ .Release.Name }}-redis-cluster"
   namespace: redis
 spec:
-  serviceName: redis-cluster
   replicas: {{ .Values.spec.replicas }}
   selector:
     matchLabels:
