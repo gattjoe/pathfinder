@@ -20,4 +20,4 @@ data:
     enable-debug-command no
     enable-module-command no
 
-    user blocky on #a97629575554c1dc3b1d6bbe52d5ff87292916861cd3fc6e239294d3e67b1da0 allcommands allkeys
+    user blocky on #a97629575554c1dc3b1d6bbe52d5ff87292916861cd3fc6e239294d3e67b1da0 +@read +@write
