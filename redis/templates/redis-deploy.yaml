@@ -33,19 +33,19 @@ spec:
             - containerPort: 6379
               name: client
           volumeMounts:
-            - name: data
-              mountPath: /data
+  #          - name: data
+  #            mountPath: /data
             - name: config-volume
               mountPath: /etc/redis
       volumes:
         - name: config-volume
           configMap:
             name: redis-config
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        accessModes: ['ReadWriteOnce']
-        resources:
-          requests:
-            storage: 5Gi
+  #volumeClaimTemplates:
+  #  - metadata:
+  #      name: data
+  #    spec:
+  #      accessModes: ['ReadWriteOnce']
+  #      resources:
+  #        requests:
+  #          storage: 5Gi
