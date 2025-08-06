@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: redis
+  name: redis-blocky
   namespace: argocd
 spec:
   project: default
@@ -11,9 +11,12 @@ spec:
     targetRevision: HEAD
     helm:
       releaseName: maul
+      valuesObject:
+        metadata:
+          namespace: blocky
   destination:
     server: https://kubernetes.default.svc
-    namespace: redis
+    namespace: blocky
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
