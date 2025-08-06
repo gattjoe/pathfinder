@@ -16,6 +16,9 @@ spec:
       targetRevision: HEAD
       helm:
         releaseName: blocky
+        valuesObject:
+          metadata:
+            namespace: blocky
   destination:
     server: https://kubernetes.default.svc
     namespace: blocky
