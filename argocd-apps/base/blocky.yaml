@@ -11,7 +11,6 @@ spec:
       targetRevision: HEAD
       helm:
         releaseName: maul
-        source:
     - repoURL: https://github.com/gattjoe/pathfinder.git
       path: redis
       targetRevision: HEAD
