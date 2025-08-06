@@ -5,12 +5,21 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/gattjoe/pathfinder.git
-    path: blocky
-    targetRevision: HEAD
-    helm:
-      releaseName: maul
+  sources:
+    - repoURL: https://github.com/gattjoe/pathfinder.git
+      path: blocky
+      targetRevision: HEAD
+      helm:
+        releaseName: maul
+        source:
+    - repoURL: https://github.com/gattjoe/pathfinder.git
+      path: redis
+      targetRevision: HEAD
+      helm:
+        releaseName: blocky
+        valuesObject:
+          metadata:
+            namespace: blocky
   destination:
     server: https://kubernetes.default.svc
     namespace: blocky

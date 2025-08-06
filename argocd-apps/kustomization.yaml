@@ -16,6 +16,6 @@ resources:
   - base/metallb.yaml
   - base/openwebui.yaml
   - base/prom.yaml
-  - base/redis.yaml
+  #- base/redis.yaml
   - base/sync-argocd-apps.yaml
   - base/testserver.yaml
