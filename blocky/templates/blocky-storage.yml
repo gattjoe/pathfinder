@@ -21,7 +21,7 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - "{{ .Values.env.cluster }}"
+                - "{{ .Release.Name }}"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
