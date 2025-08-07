@@ -26,6 +26,9 @@ spec:
           targetRevision: HEAD
           helm:
             releaseName: "{{.name}}"
+            valuesObject:
+              env:
+                cluster: "{{.name}}"
         - repoURL: https://github.com/gattjoe/pathfinder.git
           path: redis
           targetRevision: HEAD
