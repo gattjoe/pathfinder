@@ -1,30 +1,45 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: blocky
   namespace: argocd
 spec:
-  project: default
-  sources:
-    - repoURL: https://github.com/gattjoe/pathfinder.git
-      path: blocky
-      targetRevision: HEAD
-      helm:
-        releaseName: maul
-    - repoURL: https://github.com/gattjoe/pathfinder.git
-      path: redis
-      targetRevision: HEAD
-      helm:
-        releaseName: blocky
-        valuesObject:
-          metadata:
-            namespace: blocky
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: blocky
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "maul"
+  template:
+  metadata:
+    name: blocky-{{.name}}
+  spec:
+    project: default
+    sources:
+      - repoURL: https://github.com/gattjoe/pathfinder.git
+        path: blocky
+        targetRevision: HEAD
+        helm:
+          releaseName: "{{.name}}"
+          valuesObject:
+            ingress:
+              hosts: "{{.name}}.blocky.echobase.network"
+              host: "{{.name}}.blocky.echobase.network"
+      - repoURL: https://github.com/gattjoe/pathfinder.git
+        path: redis
+        targetRevision: HEAD
+        helm:
+          releaseName: blocky
+          valuesObject:
+            metadata:
+              namespace: blocky
+    destination:
+      server: "{{.server}}"
+      namespace: blocky
+    syncPolicy:
+      syncOptions:
+        - CreateNamespace=true
+      automated:
+        prune: true
+        selfHeal: true
