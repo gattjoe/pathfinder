@@ -22,10 +22,6 @@ spec:
           targetRevision: HEAD
           helm:
             releaseName: "{{.name}}"
-            valuesObject:
-              ingress:
-                hosts: "{{.name}}.blocky.echobase.network"
-                host: "{{.name}}.blocky.echobase.network"
         - repoURL: https://github.com/gattjoe/pathfinder.git
           path: redis
           targetRevision: HEAD

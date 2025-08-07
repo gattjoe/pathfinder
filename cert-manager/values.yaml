@@ -8,7 +8,6 @@ dnsNames:
   - "comfyui.echobase.network"
   - "monitoring.echobase.network"
   - "blocky.echobase.network"
-  - "maul.blocky.echobase.network"
   - "ingress.metrics.vader.echobase.network"
   - "openwebui.echobase.network"
   - "qdrant.echobase.network"
