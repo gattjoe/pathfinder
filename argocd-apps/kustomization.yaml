@@ -14,6 +14,7 @@ resources:
   - base/ingress-nginx-kenobi.yaml
   - base/ingress-nginx-vader.yaml
   - base/metallb.yaml
+  - base/opensearch-operator.yaml
   - base/openwebui.yaml
   - base/prom.yaml
   #- base/redis.yaml

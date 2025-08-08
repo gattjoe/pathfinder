@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: opensearch-operator
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "maul"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "kenobi"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
+  template:
+    metadata:
+      name: opensearch-operator-{{.name}}
+    spec:
+      project: default
+      source:
+        repoURL: https://opensearch-project.github.io/opensearch-k8s-operator/
+        chart: opensearch-operator
+        targetRevision: 2.8.0
+        helm:
+          releaseName: "{{.name}}"
+      destination:
+        server: "{{.server}}"
+        namespace: opensearch-operator
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
