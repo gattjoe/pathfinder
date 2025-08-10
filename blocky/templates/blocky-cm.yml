@@ -42,6 +42,8 @@ data:
           - 192.168.4.158
         samsunggalaxyx:
           - 192.168.4.211
+        frankiphone:
+          - 192.168.4.65
 
         # IOT
         familyroomnest:
@@ -56,6 +58,8 @@ data:
           - 192.168.2.139
         rachio:
           - 192.168.2.81
+        hpprinter:
+          - 192.168.4.152
 
         # TV
         familyroomappletv:
