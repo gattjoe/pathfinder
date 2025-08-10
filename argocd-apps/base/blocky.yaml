@@ -11,10 +11,10 @@ spec:
         selector:
           matchLabels:
             name: "maul"
-  #  - clusters:
-  #      selector:
-  #        matchLabels:
-  #          name: "kenobi"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "kenobi"
   template:
     metadata:
       name: blocky-{{.name}}
