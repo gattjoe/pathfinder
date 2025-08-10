@@ -1,34 +1,53 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: ingress-nginx
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/kubernetes/ingress-nginx.git
-    path: deploy/static/provider/cloud
-    targetRevision: af6352cbe46e3c384c69c28257efa99535b97c80 # v1.12.3
-    kustomize:
-      patches:
-        - target:
-            kind: Deployment
-            name: ingress-nginx-controller
-          patch: |-
-            - op: add
-              path: /spec/template/spec/containers/0/args/-
-              value: --enable-metrics
-      commonAnnotations:
-        prometheus.io/port: "10254"
-        prometheus.io/scrape: "true"
-        prometheus.io/scheme: "http"
-        prometheus.io/path: "/metrics"
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: ingress-nginx
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "maul"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "kenobi"
+  template:
+    metadata:
+      name: nginx-{{.name}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/kubernetes/ingress-nginx.git
+        path: deploy/static/provider/cloud
+        targetRevision: 9dc73d17c76e2289408ebff2f3446b8b13c3e72e # v1.13.0
+        kustomize:
+          patches:
+            - target:
+                kind: Deployment
+                name: ingress-nginx-controller
+              patch: |-
+                - op: add
+                  path: /spec/template/spec/containers/0/args/-
+                  value: --enable-metrics
+          commonAnnotations:
+            prometheus.io/port: "10254"
+            prometheus.io/scrape: "true"
+            prometheus.io/scheme: "http"
+            prometheus.io/path: "/metrics"
+      destination:
+        server: "{{.server}}"
+        namespace: ingress-nginx
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true
