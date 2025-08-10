@@ -11,10 +11,6 @@ spec:
         selector:
           matchLabels:
             name: "vader"
-    - clusters:
-        selector:
-          matchLabels:
-            name: "kenobi"
   template:
     metadata:
       name: metallb-{{.name}}
