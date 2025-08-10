@@ -11,7 +11,7 @@ resources:
   #- base/forwardproxy.yaml
   - base/graf.yaml
   - base/ingress-nginx.yaml
-  - base/ingress-nginx-kenobi.yaml
+  #- base/ingress-nginx-kenobi.yaml
   - base/ingress-nginx-vader.yaml
   - base/metallb.yaml
   - base/opensearch-operator.yaml
