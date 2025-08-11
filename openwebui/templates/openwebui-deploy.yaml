@@ -25,9 +25,6 @@ spec:
             requests:
               memory: 1024Mi
               cpu: 1
-            max:
-              memory: 3072Mi
-              cpu: 3
           env:
             - name: ENABLE_ADMIN_EXPORT
               value: "false"
