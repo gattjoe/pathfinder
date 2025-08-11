@@ -12,7 +12,7 @@ spec:
   tls:
     - hosts:
         - "prometheus.{{ .Release.Name }}.echobase.network"
-      secretName: graf-prod-tls
+      secretName: prom-prod-tls
   rules:
     - host: "prometheus.{{ .Release.Name }}.echobase.network"
       http:
