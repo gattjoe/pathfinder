@@ -21,13 +21,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8888
-          resources:
-            requests:
-              memory: "1024Mi"
-              cpu: "1"
-            limits:
-              memory: "2048Mi"
-              cpu: "2"
           env:
             - name: ENABLE_ADMIN_EXPORT
               value: "false"
