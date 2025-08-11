@@ -14,7 +14,7 @@ spec:
         cpu: "1"
         memory: "1024Mi"
       defaultRequest:
-        cpu: "1"
+        cpu: "2"
         memory: "1024Mi"
       max:
         cpu: "3"
