@@ -42,13 +42,13 @@ spec:
             - name: OLLAMA_BASE_URL
               value: "{{ .Values.env.OLLAMA_BASE_URL }}"
             - name: OFFLINE_MODE
-              value: "false"
+              value: "true"
             - name: PORT
               value: "8888"
-            - name: RAG_EMBEDDING_ENGINE
-              value: "ollama"
-            - name: RAG_OLLAMA_BASE_URL
-              value: "{{ .Values.env.OLLAMA_BASE_URL }}"
+            #- name: RAG_EMBEDDING_ENGINE
+            #  value: "ollama"
+            #- name: RAG_OLLAMA_BASE_URL
+            #  value: "{{ .Values.env.OLLAMA_BASE_URL }}"
             - name: WEBUI_AUTH
               value: "false"
             - name: WEBUI_AUTH_COOKIE_SECURE
