@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: opensearch
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            name: "maul"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "vader"
+    - clusters:
+        selector:
+          matchLabels:
+            name: "kenobi"
+  template:
+    metadata:
+      name: opensearch-{{.name}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/gattjoe/pathfinder.git
+        path: opensearch
+        targetRevision: HEAD
+        helm:
+          releaseName: "{{.name}}"
+          valueFiles:
+            - values.yaml
+      destination:
+        server: "{{.server}}"
+        namespace: scarif
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated:
+          prune: true
+          selfHeal: true

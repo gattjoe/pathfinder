@@ -12,6 +12,7 @@ resources:
   - base/graf.yaml
   - base/ingress-nginx.yaml
   - base/metallb.yaml
+  - base/opensearch-cluster.yaml
   - base/opensearch-operator.yaml
   - base/openwebui.yaml
   - base/prom.yaml
