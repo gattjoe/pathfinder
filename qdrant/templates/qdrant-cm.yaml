@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: qdrant-config-map
+  namespace: qdrant-ns
+data:
+  initialize.sh: |
+    #!/bin/sh
+    echo "Soft limits"
+    ulimit -a -S
+    echo "Hard limits"
+    ulimit -a -H
+    ulimit -n $(ulimit -Hn)
+    SET_INDEX=${HOSTNAME##*-}
+    echo "Starting initializing for pod $SET_INDEX"
+    if [ "$SET_INDEX" = "0" ]; then
+      exec ./entrypoint.sh --uri 'http://release-name-qdrant-0.release-name-qdrant-headless:6335'
+    else
+      exec ./entrypoint.sh --bootstrap 'http://release-name-qdrant-0.release-name-qdrant-headless:6335' --uri 'http://release-name-qdrant-'"$SET_INDEX"'.release-name-qdrant-headless:6335'
+    fi
+
+  production.yaml: |
+    cluster:
+      enabled: false
+    #log_level: DEBUG
+    service:
+      # We do this on the ingress controller
+      enable_tls: false
+    storage:
+      storage_path: ./storage
+      snapshot_path: ./snapshots
+      snapshots_config:
+        snapshots_storage: local
+      temp_path: null
+    telemetry_disabled: true

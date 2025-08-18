@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: "{{ .Release.Name }}-qdrant"
+  labels:
+    app: qdrant
+    app.kubernetes.io/name: qdrant
+spec:
+  replicas: 1
+  podManagementPolicy: Parallel
+  selector:
+    matchLabels:
+      app: qdrant
+      app.kubernetes.io/name: qdrant
+  serviceName: "{{ .Release.Name }}-qdrant-service"
+  template:
+    metadata:
+      annotations:
+        checksum/config: f0027e9ea50776b94e2944af8a708d98e6c0f4143582157f4cc98dd6379d102b
+      labels:
+        app: qdrant
+        app.kubernetes.io/name: qdrant
+    spec:
+      initContainers:
+      - name: ensure-dir-ownership
+        image: "{{ .Values.image.repository }}"
+        command:
+          - chown
+          - -R
+          - 1000:3000
+          - /qdrant/storage
+          - /qdrant/snapshots
+        volumeMounts:
+          - name: qdrant-storage
+            mountPath: /qdrant/storage
+          - name: qdrant-snapshots
+            mountPath: /qdrant/snapshots
+      containers:
+        - name: qdrant
+          image: "{{ .Values.image.repository }}"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: QDRANT_INIT_FILE_PATH
+              value: /qdrant/init/.qdrant-initialized
+          command: ["/bin/bash", "-c"]
+          args:
+          - ./config/initialize.sh
+          ports:
+            - name: http
+              containerPort: 6333
+              protocol: TCP
+            - name: grpc
+              containerPort: 6334
+              protocol: TCP
+            - name: p2p
+              containerPort: 6335
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: "/readyz"
+              port: 6333
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          resources:
+            {}
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 2000
+            runAsNonRoot: true
+            runAsUser: 1000
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - sleep
+                - "3"
+          volumeMounts:
+          - name: qdrant-storage
+            mountPath: /qdrant/storage
+          - name: qdrant-config
+            mountPath: /qdrant/config/initialize.sh
+            subPath: initialize.sh
+          - name: qdrant-config
+            mountPath: /qdrant/config/production.yaml
+            subPath: production.yaml
+          - name: qdrant-snapshots
+            mountPath: /qdrant/snapshots
+          - name: qdrant-init
+            mountPath: /qdrant/init
+      securityContext:
+        fsGroup: 3000
+        fsGroupChangePolicy: Always
+      serviceAccountName: qdrant-sa
+      volumes:
+        - name: qdrant-storage
+          persistentVolumeClaim:
+            claimName: qdrant-local-claim
+        - name: qdrant-config
+          configMap:
+            name: qdrant-config-map
+            defaultMode: 0755
+        - name: qdrant-snapshots
+          emptyDir: {}
+        - name: qdrant-init
+          emptyDir: {}

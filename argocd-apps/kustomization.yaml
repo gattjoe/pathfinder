@@ -16,6 +16,7 @@ resources:
   #- base/opensearch-operator.yaml
   - base/openwebui.yaml
   - base/prom.yaml
+  - base/qdrant.yaml
   #- base/redis.yaml
   - base/sync-argocd-apps.yaml
   - base/testserver.yaml

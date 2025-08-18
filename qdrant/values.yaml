@@ -1,0 +1,6 @@
+image:
+  repository: qdrant/qdrant:v1.15.3@sha256:31407c0e8e32eb771b71718f1a4772e2ad47a07557917b21ac96792f40eb8007
+
+ingress:
+  hosts: qdrant.echobase.network
+  host: qdrant.echobase.network
