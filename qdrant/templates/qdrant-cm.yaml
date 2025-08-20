@@ -14,7 +14,7 @@ data:
     SET_INDEX=${HOSTNAME##*-}
     echo "Starting initializing for pod $SET_INDEX"
     if [ "$SET_INDEX" = "0" ]; then
-      exec ./entrypoint.sh --uri 'http://qdrant.echobase.network:6335'
+      exec ./entrypoint.sh --uri 'http://{{ .Release.Name }}-qdrant-0.{{ .Release.Name }}-qdrant-service-headless:6335'
     else
       exec ./entrypoint.sh --bootstrap 'http://qdrant.echobase.network:6335' --uri 'http://release-name-qdrant-'"$SET_INDEX"'.release-name-qdrant-headless:6335'
     fi
