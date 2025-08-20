@@ -24,10 +24,10 @@ data:
       consensus:
         tick_period_ms: 100
       enabled: true
+      p2p:
+        enable_tls: false
+        port: 6335
     log_level: INFO
-    p2p:
-      enable_tls: false
-      port: 6335
     service:
       # We do this on the ingress controller
       enable_tls: false
