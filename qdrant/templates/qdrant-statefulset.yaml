@@ -12,7 +12,7 @@ spec:
     matchLabels:
       app: qdrant
       app.kubernetes.io/name: qdrant
-  serviceName: "{{ .Release.Name }}-qdrant-service"
+  serviceName: "{{ .Release.Name }}-qdrant-service-headless"
   template:
     metadata:
       annotations:
