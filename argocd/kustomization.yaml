@@ -19,4 +19,4 @@ patches:
 
 images:
   - name: quay.io/argoproj/argocd
-    newTag: 3.1.0@sha256:b3395869c1156135a0f62514a82aa8d5d37c11eeadfb1fc130f0296ef6b0f7f4
+    newTag: 3.1.6@sha256:76290eb39df4b9b6bd6afb5d6038bb18a208b14b468bff329b9edc8f9b2aa714
