@@ -1,33 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
   name: litellm-proxy
   namespace: argocd
 spec:
-  goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
-  generators:
-    - clusters:
-        selector:
-          matchLabels:
-            name: "kenobi"
-  template:
-    metadata:
-      name: litellm-proxy
-    spec:
-      project: default
-      source:
-        - chart: litellm-helm
-          repoURL: ghcr.io/berriai/litellm-helm:0.1.812
-          targetRevision: HEAD
-          helm:
-            releaseName: "litellm-proxy"
-      destination:
-        server: "{{.server}}"
-        namespace: litellm
-      syncPolicy:
-        syncOptions:
-          - CreateNamespace=true
-        automated:
-          prune: true
-          selfHeal: true
+  project: default
+  source:
+    chart: litellm-helm
+    repoURL: ghcr.io/berriai/litellm-helm:0.1.812
+    targetRevision: HEAD
+    helm:
+      releaseName: litellm-proxy
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: litellm
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
