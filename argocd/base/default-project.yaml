@@ -8,7 +8,7 @@ spec:
     - "https://github.com/gattjoe/pathfinder.git"
     - "https://github.com/kubernetes/ingress-nginx.git"
     - "https://opensearch-project.github.io/opensearch-k8s-operator/"
-    - "https://ghcr.io/berriai/litellm-helm"
+    - "ghcr.io/berriai/litellm-helm"
   destinations:
     - server: "*"
       namespace: "!default"
