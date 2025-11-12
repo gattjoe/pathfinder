@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     chart: litellm-helm
-    repoURL: https://ghcr.io/berriai/litellm-helm
+    repoURL: ghcr.io/berriai
     targetRevision: 0.1.812
     helm:
       releaseName: litellm-proxy
