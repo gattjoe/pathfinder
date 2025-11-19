@@ -36,6 +36,8 @@ data:
           - 192.168.4.117
         fmba:
           - 192.168.4.54
+        maczero:
+          - 192.168.4.67
         mrblack:
           - 192.168.4.82
         ninoapplewatch:
