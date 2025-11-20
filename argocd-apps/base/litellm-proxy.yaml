@@ -16,6 +16,8 @@ spec:
           className: "nginx"
           hosts:
             - host: llmproxy.echobase.network
+              paths:
+                path: /
         proxy_config:
           model_list:
             - model_name: "gemma3:27b-it-qat"
