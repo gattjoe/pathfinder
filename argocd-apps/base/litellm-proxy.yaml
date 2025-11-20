@@ -18,9 +18,9 @@ spec:
             - host: llmproxy.echobase.network
         proxy_config:
           model_list:
-            - model_name: gemma3:27b-it-qat
+            - model_name: "gemma3:27b-it-qat"
               litellm_params:
-                model: gemma3:27b-it-qat
+                model: "ollama/gemma3:27b-it-qat"
                 api_base: http://r2d2.echobase.network:11434
 
       releaseName: litellm-proxy
