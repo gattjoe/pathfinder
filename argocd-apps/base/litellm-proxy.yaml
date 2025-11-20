@@ -23,6 +23,7 @@ spec:
                 model: "ollama/gemma3:27b-it-qat"
                 api_base: "http://r2d2.echobase.network:11434"
         service:
+          port: 6000
           type: LoadBalancer
       releaseName: litellm-proxy
   destination:
