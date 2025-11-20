@@ -13,7 +13,7 @@ spec:
       valuesObject:
         ingress:
           enabled: true
-          className: "nginx"
+          className: nginx
           hosts:
             - host: llmproxy.echobase.network
         proxy_config:
