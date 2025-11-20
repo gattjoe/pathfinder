@@ -42,6 +42,10 @@ spec:
               value: "true"
             - name: PORT
               value: "8888"
+            - name: USE_CUDA_DOCKER
+              value: "false"
+            - name: USE_OLLAMA_DOCKER
+              value: "false"
             #- name: RAG_EMBEDDING_ENGINE
             #  value: "ollama"
             #- name: RAG_OLLAMA_BASE_URL
