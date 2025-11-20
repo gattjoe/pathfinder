@@ -15,15 +15,13 @@ spec:
           enabled: true
           className: "nginx"
           hosts:
-            - host: llmproxy.echobase.network
-              paths:
-                - path: /
+            - host: "llmproxy.echobase.network"
         proxy_config:
           model_list:
             - model_name: "gemma3:27b-it-qat"
               litellm_params:
                 model: "ollama/gemma3:27b-it-qat"
-                api_base: http://r2d2.echobase.network:11434
+                api_base: "http://r2d2.echobase.network:11434"
         service:
           type: LoadBalancer
       releaseName: litellm-proxy
