@@ -11,14 +11,6 @@ spec:
     targetRevision: 0.1.812
     helm:
       valuesObject:
-        ingress:
-          enabled: true
-          className: "nginx"
-          hosts:
-            - host: "llmproxy.echobase.network"
-              paths:
-                - path: /
-                  pathType: ImplementationSpecific
         proxy_config:
           model_list:
             - model_name: "gemma3:27b-it-qat"
