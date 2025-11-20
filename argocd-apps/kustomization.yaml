@@ -11,7 +11,7 @@ resources:
   #- base/forwardproxy.yaml
   - base/graf.yaml
   - base/ingress-nginx.yaml
-  - base/litellm-proxy.yaml
+  #- base/litellm-proxy.yaml
   - base/metallb.yaml
   #- base/opensearch-cluster.yaml
   #- base/opensearch-operator.yaml
