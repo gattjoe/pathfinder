@@ -13,7 +13,7 @@ spec:
       valuesObject:
         ingress:
           enabled: true
-          className: nginx
+          className: "nginx"
           hosts:
             - host: llmproxy.echobase.network
         proxy_config:
@@ -22,7 +22,8 @@ spec:
               litellm_params:
                 model: "ollama/gemma3:27b-it-qat"
                 api_base: http://r2d2.echobase.network:11434
-
+        service:
+          type: LoadBalancer
       releaseName: litellm-proxy
   destination:
     server: https://kubernetes.default.svc
