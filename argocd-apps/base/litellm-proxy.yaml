@@ -11,10 +11,16 @@ spec:
     targetRevision: 0.1.812
     helm:
       valuesObject:
+        ingress:
+          enabled: true
+          className: "nginx"
+          hosts:
+            - host: llmproxy.echobase.network
         proxy_config:
           model_list:
             - model_name: gemma3:27b-it-qat
               api_base: http://r2d2.echobase.network:11434
+
       releaseName: litellm-proxy
   destination:
     server: https://kubernetes.default.svc
