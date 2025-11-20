@@ -2,7 +2,7 @@ env:
   OLLAMA_BASE_URL: "http://r2d2.echobase.network:11434"
 
 image:
-  repository: ghcr.io/open-webui/open-webui@sha256:e0d5de16978786b8a7538adf1efcde5258f38faf
+  repository: ghcr.io/open-webui/open-webui@sha256:b8a5befbb9a7ee21f478282d9bb3a9559cc14be6568718a7c5e7209399c07956
 
 ingress:
   hosts: openwebui.echobase.network
