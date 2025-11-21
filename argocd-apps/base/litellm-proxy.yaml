@@ -12,6 +12,9 @@ spec:
     helm:
       valuesObject:
         proxy_config:
+          general_settings:
+            store_model_in_db: true
+            store_prompts_in_spend_logs: true
           model_list:
             - model_name: "gemma3:27b-it-qat"
               litellm_params:
