@@ -24,6 +24,9 @@ spec:
           enabled: true
           hosts:
             - host: llmproxy.echobase.network
+              paths:
+                - path: /
+                  pathType: ImplementationSpecific
       releaseName: litellm-proxy
   destination:
     server: https://kubernetes.default.svc
