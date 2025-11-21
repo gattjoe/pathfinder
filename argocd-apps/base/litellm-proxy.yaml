@@ -16,9 +16,13 @@ spec:
             store_model_in_db: true
             store_prompts_in_spend_logs: true
           model_list:
-            - model_name: "gemma3:27b-it-qat"
+            - model_name: "gemma3:27b"
               litellm_params:
                 model: "ollama/gemma3:27b-it-qat"
+                api_base: "http://r2d2.echobase.network:11434"
+            - model_name: "llama3.2"
+              litellm_params:
+                model: "ollama/llama3.2:latest"
                 api_base: "http://r2d2.echobase.network:11434"
         service:
           port: 6000
