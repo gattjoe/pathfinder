@@ -8,7 +8,7 @@ spec:
   source:
     chart: litellm-helm
     repoURL: ghcr.io/berriai
-    targetRevision: 0.1.819@sha256:ddec70e5365eadea8753a015bf953c01d8eb28ef787aad34004262c32e466f8b
+    targetRevision: 0.1.819
     helm:
       valuesObject:
         proxy_config:
