@@ -22,6 +22,8 @@ spec:
           type: LoadBalancer
         ingress:
           enabled: true
+          hosts:
+            - host: llmproxy.echobase.network
       releaseName: litellm-proxy
   destination:
     server: https://kubernetes.default.svc
