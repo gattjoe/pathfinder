@@ -20,6 +20,8 @@ spec:
         service:
           port: 6000
           type: LoadBalancer
+        ingress:
+          enabled: true
       releaseName: litellm-proxy
   destination:
     server: https://kubernetes.default.svc
