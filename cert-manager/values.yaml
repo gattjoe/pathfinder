@@ -15,3 +15,4 @@ dnsNames:
   - "qdrant.echobase.network"
   - "argocd.echobase.network"
   - "grpc.argocd.echobase.network"
+  - "llmproxy.echobase.network"
