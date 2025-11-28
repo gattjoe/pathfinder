@@ -43,9 +43,9 @@ spec:
                 - path: /
                   pathType: ImplementationSpecific
           tls:
-            - secretName: llmproxy-prod-tls
-              hosts:
-                - llmproxy.echobase.network
+            secretName: llmproxy-prod-tls
+            hosts:
+              - llmproxy.echobase.network
       releaseName: litellm-proxy
   destination:
     server: https://kubernetes.default.svc
