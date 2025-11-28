@@ -43,8 +43,8 @@ spec:
                 - path: /
                   pathType: ImplementationSpecific
           tls:
-            hosts:
-              - llmproxy.echobase.network
+            - hosts:
+                - llmproxy.echobase.network
       secretName: llmproxy-prod-tls
       releaseName: litellm-proxy
   destination:
