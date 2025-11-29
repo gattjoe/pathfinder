@@ -27,7 +27,7 @@ spec:
       source:
         repoURL: https://github.com/kubernetes/ingress-nginx.git
         path: deploy/static/provider/cloud
-        targetRevision: 9dc73d17c76e2289408ebff2f3446b8b13c3e72e # v1.13.0
+        targetRevision: ad643baabbbf55d59c60e75330a193545aa8b788 # v1.14.0
         kustomize:
           patches:
             - target:
